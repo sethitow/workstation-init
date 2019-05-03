@@ -1,7 +1,12 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-set number
+set relativenumber number
+set mouse=a
+set showmatch
+set expandtab
+set smarttab
 
+syntax enable
 
 set shell=/bin/bash
 

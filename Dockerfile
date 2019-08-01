@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get install -y vim curl git tree fish 
+RUN apt-get install -y vim curl git tree fish mosh 
 
 COPY .vimrc ~/.vimrc
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

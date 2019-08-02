@@ -21,7 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'davidhalter/jedi-vim'
 
-Plugin 'ambv/black'
+Plugin 'psf/black'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

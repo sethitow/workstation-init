@@ -1,9 +1,20 @@
 FROM ubuntu:latest
 
-RUN apt-get update
-RUN apt-get install -y vim curl git tree fish mosh 
+RUN apt-get update && \
+    apt-get install -y vim \
+                       curl \
+                       software-properties-common \
+                       git \
+                       tree \
+                       fish \
+                       mosh \
+                       python3 \
+                       python3-pip 
 
-COPY .vimrc ~/.vimrc
+RUN pip3 install pipenv \
+                 black
+
+COPY .vimrc /root/.vimrc
 RUN git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 RUN vim +PluginInstall +qall
 

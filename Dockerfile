@@ -10,6 +10,7 @@ RUN apt-get update && \
                        tree \
                        fish \
                        mosh \
+                       openssh-server \
                        python3 \
                        python3-pip 
 

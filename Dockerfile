@@ -34,5 +34,7 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s 
 RUN curl -sL https://github.com/digitalocean/doctl/releases/download/v1.26.0/doctl-1.26.0-linux-amd64.tar.gz | tar -xzv && \
 mv doctl /usr/local/bin
 
+RUN curl -L https://git.io/get_helm.sh | bash
+
 EXPOSE 22
 CMD fish && tail -f /dev/null

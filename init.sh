@@ -8,6 +8,8 @@ auth       sufficient     pam_tid.so\
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install vim
 brew install vim
@@ -23,11 +25,6 @@ pip install pipenv
 
 # Add user bin to path
 echo "~/bin" >> /etc/paths
-
-# Make fish default shell
-brew install fish
-echo "/usr/local/bin/fish" >> /etc/shells
-chsh -s /usr/local/bin/fish
 
 
 # Banish .DS_Store files from git tracking

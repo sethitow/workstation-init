@@ -1,5 +1,9 @@
 #! /usr/bin/env bash
 
+# Enable sudo TouchID
+sed -i '' '2i\
+auth       sufficient     pam_tid.so\
+' /etc/pam.d/sudo
 
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"

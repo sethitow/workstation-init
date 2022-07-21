@@ -1,32 +1,58 @@
 #! /usr/bin/env bash
 
-# Enable sudo TouchID
-sed -i '' '2i\
-auth       sufficient     pam_tid.so\
-' /etc/pam.d/sudo
+# Symlink profile
+ln -s "$(pwd)/.profile" $HOME/.profile
+ln -s "$(pwd)/.zprofile" $HOME/.zprofile
 
-# Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	# Install backages
+	apt-get update && \
+    apt-get install -y zsh \
+                       vim \
+                       vim-python-jedi \
+                       curl \
+                       wget \
+                       build-essential \
+                       software-properties-common \
+                       git \
+                       tree \
+                       mosh \
+                       openssh-server \
+                       python3 \
+                       python3-pip \
+                       ranger
+
+    # Set zsh as default shell
+	chsh --shell /usr/bin/zsh
+
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+	# Enable sudo TouchID
+	sed -i '' '2i\
+	auth       sufficient     pam_tid.so\
+	' /etc/pam.d/sudo
+
+	# Install Homebrew
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+	# Banish .DS_Store files from git tracking
+	echo .DS_Store > ~/.gitignore_global
+	git config --global core.excludesfile ~/.gitignore_global
+
+	# Install Homebrew packages
+	brew install git tree wget vim pyenv ffmpeg nmap socat bandwhich ranger
+fi
+
 
 # Install oh-my-zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Install vim
-brew install vim
-cp ./.vimrc ~/.vimrc
+# Configure vim
+ln -s "$(pwd)/.vimrc" $HOME/.vimrc
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-# Install Python 3
-brew install python3
-pip install pipenv
-
-
-# Add user bin to path
-echo "~/bin" >> /etc/paths
-
-
-# Banish .DS_Store files from git tracking
-echo .DS_Store > ~/.gitignore_global
-git config --global core.excludesfile ~/.gitignore_global
+# Configure git
+git config --global rebase.instructionFormat "(%an <%ae>) %s"

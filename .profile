@@ -1,4 +1,27 @@
-alias k='kubectl'
-alias g='git'
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+    . "$HOME/.bashrc"
+    fi
+fi
 
-export PATH=~/bin:$PATH
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.cargo" ] ; then
+    . "$HOME/.cargo/env"
+fi
+
+if [ -e /opt/homebrew/bin/brew ] ; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
+alias k='kubectl'

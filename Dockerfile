@@ -1,8 +1,11 @@
 FROM ubuntu:latest
 
+ENV  \
+    DEBIAN_FRONTEND=noninteractive
+
 COPY . /root/src/workstation-init
 WORKDIR /root/src/workstation-init
-RUN bash init.sh
+RUN TZ=America/Los_Angeles DEBIAN_FRONTEND=noninteractive bash init.sh
 
 RUN pip3 install pipenv \
                  black

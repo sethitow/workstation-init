@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
 # Symlink profile
-ln -s "$(pwd)/.profile" $HOME/.profile
-ln -s "$(pwd)/.zprofile" $HOME/.zprofile
+ln --symbolic --force "$(pwd)/.profile" $HOME/.profile
+ln --symbolic --force "$(pwd)/.zprofile" $HOME/.zprofile
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	# Install backages

@@ -20,7 +20,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
                        openssh-server \
                        python3 \
                        python3-pip \
-                       ranger
+                       ranger \
+                       htop
 
     # Set zsh as default shell
 	chsh --shell /usr/bin/zsh

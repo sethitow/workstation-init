@@ -1,8 +1,8 @@
 #! /usr/bin/env bash
 
-# Symlink profile
-ln --symbolic --force "$(pwd)/.profile" $HOME/.profile
-ln --symbolic --force "$(pwd)/.zprofile" $HOME/.zprofile
+# Symlink profile -- short flags are required for MacOS
+ln -s -f "$(pwd)/.profile" $HOME/.profile
+ln -s -f "$(pwd)/.zprofile" $HOME/.zprofile
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	# Install backages
@@ -40,7 +40,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	git config --global core.excludesfile ~/.gitignore_global
 
 	# Install Homebrew packages
-	brew install git tree wget vim pyenv ffmpeg nmap socat bandwhich ranger
+	brew install git mosh tree wget vim pyenv ffmpeg nmap socat bandwhich ranger jq kubernetes-cli helm
 fi
 
 
@@ -53,7 +53,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
 
 # Install NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 # Configure git
 git config --global rebase.instructionFormat "(%an <%ae>) %s"

@@ -24,7 +24,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
                        htop \
                        ninja \
                        cmake \
-                       tmux
+                       tmux \
+                       neovim
 
     # Set zsh as default shell
 	chsh --shell /usr/bin/zsh
@@ -59,7 +60,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	 helm \
 	 ninja \
 	 cmake \
-	 tmux
+	 tmux \
+	 neovim
 fi
 
 

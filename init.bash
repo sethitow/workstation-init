@@ -21,7 +21,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
                        python3 \
                        python3-pip \
                        ranger \
-                       htop
+                       htop \
+                       ninja \
+                       cmake \
+                       tmux
 
     # Set zsh as default shell
 	chsh --shell /usr/bin/zsh
@@ -40,7 +43,23 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	git config --global core.excludesfile ~/.gitignore_global
 
 	# Install Homebrew packages
-	brew install git mosh tree wget vim pyenv ffmpeg nmap socat bandwhich ranger jq kubernetes-cli helm
+	brew install git \
+	 mosh \
+	 tree \
+	 wget \
+	 vim \
+	 pyenv \
+	 ffmpeg \
+	 nmap \
+	 socat \
+	 bandwhich \
+	 ranger \
+	 jq \
+	 kubernetes-cli \
+	 helm \
+	 ninja \
+	 cmake \
+	 tmux
 fi
 
 

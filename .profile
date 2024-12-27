@@ -28,4 +28,15 @@ if [ -e /opt/homebrew/bin/brew ] ; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
+if [ -d "$HOME/.pyenv" ] ; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
+
+if [ -d "/Applications/Sublime Text.app/Contents/SharedSupport/bin" ] ; then
+    export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
+fi
+
+
 alias k='kubectl'
